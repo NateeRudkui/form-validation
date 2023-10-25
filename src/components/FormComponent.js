@@ -6,6 +6,11 @@ const FormComponent = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repassWord, setRePassword] = useState("");
+
+  const [errorUserName, setErrorUserName] = useState("ไม่เกิน 8 ตัวอักษร");
+  const [errorEmail, setErrorEmail] = useState("รูปแบบ email ไม่ถูกต้อง");
+  const [errorPassword, setErrorPassword] = useState("password ไม่ปลอดภัย");
+  const [errorRePassword, setErrorRePassword] = useState("รหัสผ่านไม่ตรงกัน");
   return (
     <div className="container">
       <form className="form">
@@ -16,7 +21,7 @@ const FormComponent = () => {
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
           ></input>
-          <small>error magssge</small>
+          <small>{errorUserName}</small>
         </div>
       </form>
       <form className="form">
@@ -27,7 +32,7 @@ const FormComponent = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           ></input>
-          <small>error magssge</small>
+          <small>{errorEmail}</small>
         </div>
       </form>
       <form className="form">
@@ -38,7 +43,7 @@ const FormComponent = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></input>
-          <small>error magssge</small>
+          <small>{errorPassword}</small>
         </div>
       </form>
       <form className="form">
@@ -49,7 +54,7 @@ const FormComponent = () => {
             value={repassWord}
             onChange={(e) => setRePassword(e.target.value)}
           ></input>
-          <small>error magssge</small>
+          <small>{errorRePassword}</small>
         </div>
       </form>
       <button type="submit"></button>

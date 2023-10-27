@@ -7,13 +7,29 @@ const FormComponent = () => {
   const [password, setPassword] = useState("");
   const [repassWord, setRePassword] = useState("");
 
-  const [errorUserName, setErrorUserName] = useState("ไม่เกิน 8 ตัวอักษร");
-  const [errorEmail, setErrorEmail] = useState("รูปแบบ email ไม่ถูกต้อง");
+  const [errorUserName, setErrorUserName] = useState("");
+  const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("password ไม่ปลอดภัย");
   const [errorRePassword, setErrorRePassword] = useState("รหัสผ่านไม่ตรงกัน");
+
+  const validateForm = (e) => {
+    e.preventDefault();
+
+    if (userName.length > 8) {
+      setErrorUserName("");
+    } else {
+      setErrorUserName("username ต้องมีความยา 8 ตัวอักษรขึ้นไป");
+    }
+
+    if (email.includes("@")) {
+      setErrorEmail("");
+    } else {
+      setErrorEmail("รูปแบบ email ไม่ถูกต้อง");
+    }
+  };
   return (
     <div className="container">
-      <form className="form">
+      <form className="form" onSubmit={validateForm}>
         <div className="form-control">
           <label>ชื่อผ้ใช้</label>
           <input
@@ -23,8 +39,6 @@ const FormComponent = () => {
           ></input>
           <small>{errorUserName}</small>
         </div>
-      </form>
-      <form className="form">
         <div className="form-control">
           <label>email</label>
           <input
@@ -34,8 +48,6 @@ const FormComponent = () => {
           ></input>
           <small>{errorEmail}</small>
         </div>
-      </form>
-      <form className="form">
         <div className="form-control">
           <label>password</label>
           <input
@@ -45,8 +57,6 @@ const FormComponent = () => {
           ></input>
           <small>{errorPassword}</small>
         </div>
-      </form>
-      <form className="form">
         <div className="form-control">
           <label>ยืนยัน password</label>
           <input
@@ -56,8 +66,8 @@ const FormComponent = () => {
           ></input>
           <small>{errorRePassword}</small>
         </div>
+        <button type="submitฃ">Submit</button>
       </form>
-      <button type="submit"></button>
     </div>
   );
 };
